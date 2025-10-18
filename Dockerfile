@@ -16,4 +16,3 @@ RUN chmod +x /start.sh
 
 # Use custom startup script
 CMD ["/start.sh"]
-```

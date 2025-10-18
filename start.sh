@@ -14,5 +14,5 @@ echo "Waiting for playit to initialize..."
 sleep 10
 
 echo "Starting Minecraft Bedrock Server..."
-# Call the original entrypoint from the base image
-exec bash -c ". /usr/local/bin/bedrock-entry"
+# Use the full entrypoint command from the base image
+exec /usr/local/bin/entrypoint-demoter --match /data --debug --stdin-on-term stop /opt/bedrock-entry.sh

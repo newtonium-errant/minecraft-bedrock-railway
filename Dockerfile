@@ -14,5 +14,5 @@ RUN apt-get update && \
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-# Use custom startup script
-CMD ["/start.sh"]
+# Override entrypoint
+ENTRYPOINT ["/start.sh"]

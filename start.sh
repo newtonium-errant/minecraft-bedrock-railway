@@ -1,17 +1,22 @@
 #!/bin/bash
 set -e
 
-echo "Starting Playit.gg tunnel..."
+echo "Starting Playit.gg with tunnel configuration..."
 if [ -n "$PLAYIT_SECRET" ]; then
     echo "Using provided secret key"
-    playit --secret "$PLAYIT_SECRET" &
+    playit --secret "$PLAYIT_SECRET" --port 19132 --proto udp &
 else
-    echo "No secret key provided, starting in claim mode"
     playit &
 fi
 
 echo "Waiting for playit to initialize..."
-sleep 5
+sleep 10
 
 echo "Starting Minecraft Bedrock Server..."
-exec /bedrock-entry.sh
+if [ -f "/usr/local/bin/bedrock-entry" ]; then
+    exec /usr/local/bin/bedrock-entry
+elif [ -f "/bedrock-entry.sh" ]; then
+    exec /bedrock-entry.sh
+else
+    exec /usr/bin/bedrock-entry
+fi

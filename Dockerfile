@@ -1,4 +1,3 @@
-```dockerfile
 FROM itzg/minecraft-bedrock-server:latest
 
 # Install dependencies and playit.gg

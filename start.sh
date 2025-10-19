@@ -16,8 +16,3 @@ sleep 10
 echo "Starting Minecraft Bedrock Server..."
 exec /usr/local/bin/entrypoint-demoter --match /data --debug --stdin-on-term stop /opt/bedrock-entry.sh
 ```
-
-Then in Railway, add these environment variables:
-```
-ALLOW_CHEATS=true
-OPS=*
